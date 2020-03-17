@@ -1,5 +1,11 @@
 all: gnome
 
+check:
+	@shellcheck -s sh ./generate.sh
+
+package: check
+	@tar cvzf color7.tar.gz templates/*
+
 xfce:
 	@install -D ./xfce4-terminal/*.theme $(HOME)/.local/share/xfce4/terminal/colorschemes
 
@@ -17,4 +23,4 @@ clean:
 	@printf "Not really relevant\n"
 
 .PHONY:
-	all install clean xfce gnome omzsh
+	all install clean xfce gnome omzsh check package
