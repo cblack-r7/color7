@@ -1,5 +1,5 @@
 #!/bin/sh
-export VARIANTNAME="color7-light"
+export VARIANTNAME="color7-2018-light"
 export VARIANTINFO="Light Rapid7 color scheme variant"
 export FOREGROUND="#414d58"
 export BACKGROUND="#e5e5e5"

@@ -1,4 +1,5 @@
 color7.tar.gz
+output/
 templates/dwm
 templates/gnome-terminal
 templates/iterm
@@ -8,3 +9,4 @@ templates/st
 templates/terminator
 templates/xfce4-terminal
 templates/xresources
+.*.s*

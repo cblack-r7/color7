@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-[[ -z "$PROFILE_NAME" ]] && PROFILE_NAME="color7"
-[[ -z "$PROFILE_SLUG" ]] && PROFILE_SLUG="color7"
+[[ -z "$PROFILE_NAME" ]] && PROFILE_NAME="{{.VARIANTNAME}}"
+[[ -z "$PROFILE_SLUG" ]] && PROFILE_SLUG="{{.VARIANTNAME}}"
 [[ -z "$DCONF" ]] && DCONF=dconf
 [[ -z "$UUIDGEN" ]] && UUIDGEN=uuidgen
 
@@ -56,10 +56,10 @@ if which "$DCONF" > /dev/null 2>&1; then
 
         # update profile values with theme options
         dset visible-name "'$PROFILE_NAME'"
-        dset palette "['#414d58', '#e95f26', '#00b07e', '#f9a029', '#006ec5', '#9853de', '#5797b7', '#7f8d9a', '#97a3ab', '#f58f30', '#affed3', '#fad15a', '#2596cd', '#ac6ced', '#6c78ed', '#dde5e8']"
-        dset background-color "'#182028'"
-        dset foreground-color "'#e9eef0'"
-        dset bold-color "'#e9eef0'"
+        dset palette "['{{.BLACK1}}', '{{.RED1}}', '{{.GREEN1}}', '{{.YELLOW1}}', '{{.BLUE1}}', '{{.MAGENTA1}}', '{{.CYAN1}}', '{{.WHITE1}}', {{.BLACK2}}', '{{.RED2}}', '{{.GREEN2}}', '{{.YELLOW2}}', '{{.BLUE2}}', '{{.MAGENTA2}}', '{{.CYAN2}}', '{{.WHITE2}}']"
+        dset background-color "'{{.BACKGROUND}}'"
+        dset foreground-color "'{{.FOREGROUND}}'"
+        dset bold-color "'{{.FOREGROUND}}'"
         dset bold-color-same-as-fg "true"
         dset use-theme-colors "false"
         dset use-theme-background "false"
@@ -105,11 +105,11 @@ glist_append() {
 # Append the profile to the profile list
 glist_append string /apps/gnome-terminal/global/profile_list "$PROFILE_SLUG"
 
-gset string visible_name "$PROFILE_NAME"
-gset string palette "#414d58:#e95f26:#00b07e:#f9a029:#006ec5:#9853de:#5797b7:#7f8d9a:#97a3ab:#f58f30:#affed3:#fad15a:#2596cd:#ac6ced:#6c78ed:#dde5e8"
-gset string background_color "#182028"
-gset string foreground_color "#e9eef0"
-gset string bold_color "#e9eef0"
+gset string visible_name "{{.VARIANTNAME}}"
+gset string palette "{{.BLACK1}}:{{.RED1}}:{{.GREEN1}}:{{.YELLOW1}}:{{.BLUE1}}:{{.MAGENTA1}}:{{.CYAN1}}:{{.WHITE1}}:{{.BLACK2}}:{{.RED2}}:{{.GREEN2}}:{{.YELLOW2}}:{{.BLUE2}}:{{.MAGENTA2}}:{{.CYAN2}}:{{.WHITE2}}"
+gset string background_color "{{.BACKGROUND}}"
+gset string foreground_color "{{.FOREGROUND}}"
+gset string bold_color "{{.FOREGROUND}}"
 gset bool   bold_color_same_as_fg "true"
 gset bool   use_theme_colors "false"
 gset bool   use_theme_background "false"

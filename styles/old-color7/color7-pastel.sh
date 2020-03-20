@@ -1,5 +1,5 @@
 #!/bin/sh
-export VARIANTNAME="color7-pastel"
+export VARIANTNAME="color7-2018-pastel"
 export VARIANTINFO="Pastel Rapid7 color scheme"
 export FOREGROUND="#e5e5e5"
 export BACKGROUND="#414d58"

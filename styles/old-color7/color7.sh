@@ -1,5 +1,5 @@
 #!/bin/sh
-export VARIANTNAME="color7"
+export VARIANTNAME="color7-2018"
 export VARIANTINFO="Default Rapid7 color scheme"
 export FOREGROUND="#e9eef0"
 export BACKGROUND="#182028"
