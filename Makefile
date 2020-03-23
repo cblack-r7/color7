@@ -7,9 +7,8 @@ check:
 	@shellcheck -s sh ./generate.sh
 
 package: check gen
-	@cp -r output/ color7-output/
-	@tar cvzf color7.tar.gz color7-output/*
-	@rm -rf color7-output/
+	@git archive --prefix=color7/ --format=tar -o color7.tar HEAD
+	@gzip color7.tar
 
 install_xfce: check gen
 	@mkdir -p $(HOME)/.local/share/xfce4/terminal/colorschemes
