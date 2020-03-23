@@ -1,5 +1,6 @@
 color7.tar.gz
 output/
+color7-output/
 templates/dwm
 templates/gnome-terminal
 templates/iterm
