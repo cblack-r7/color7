@@ -6,10 +6,21 @@
 
 ---
 
-<p align="center"><img src="assets/color7-screenshot.jpg"/><blockquote>Default colors.</blockquote></p>
-<p align="center"><img src="assets/color7-dark-screenshot.jpg"/><blockquote>Dark colors.</blockquote></p>
-<p align="center"><img src="assets/color7-pastel-screenshot.jpg"/><blockquote>Pastel colors.</blockquote></p>
-<p align="center"><img src="assets/color7-light-screenshot.jpg"/><blockquote>Light colors.</blockquote></p>
+### Default colors:
+
+<p align="center"><img src="assets/color7-screenshot.jpg"/></p>
+
+### Dark colors:
+
+<p align="center"><img src="assets/color7-dark-screenshot.jpg"/></p>
+
+### Pastel colors:
+
+<p align="center"><img src="assets/color7-pastel-screenshot.jpg"/></p>
+
+### Light colors:
+
+<p align="center"><img src="assets/color7-light-screenshot.jpg"/></p>
 
 Support for:
 
