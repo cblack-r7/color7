@@ -35,9 +35,15 @@ Support for:
 
 ## Getting started
 
+### Download
+
+Grab the latest `tar.gz` file from the [Color7 Release's Page](https://github.com/cblack-r7/color7/releases/), and untar it.
+
+Then enter the `color7` directory and follow the installation steps for your preferred terminal.
+
 ### Installation
 
-If you are running Gnome (default in Kali):
+If you are running Gnome:
 
 ```shell
 make install_gnome
@@ -64,3 +70,10 @@ To install the themes simply:
 * Select the `.itermcolors` inside of the `./output/iterm/` directory.
 * Click on Load Presets and choose a color scheme.
 
+#### Other
+
+The dwm, st, slock and .Xresources terminals depends very heavily on user configuration and should be manually patched into their prosepective environments.
+
+#### ZSH Theme
+
+The project also includes a zsh theme that was quite popular at the time. Simply copy it into your `.oh-my-zsh/themes` directory and change the `.zsh` theme option to point to the new file (by name)
