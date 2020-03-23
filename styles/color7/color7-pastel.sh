@@ -1,39 +1,39 @@
 #!/bin/sh
-export VARIANTNAME="color7-pastel"
-export VARIANTINFO="Pastel Rapid7 color scheme"
+export VARIANTNAME="color7"
+export VARIANTINFO="Default Rapid7 color scheme"
 
-export FOREGROUND="#e5e5e5"
-export BACKGROUND="#414d58"
-export CURSOR="#e5e5e5"
+export FOREGROUND="#E5E5E5"
+export BACKGROUND="#414D58"
+export CURSOR="#E5E5E5"
 
 #black
-export BLACK1="#4c5a67"
-export BLACK2="#5a6672"
+export BLACK1="#212933"
+export BLACK2="#182028"
 
 #red
-export RED1="#ed6e3e"
-export RED2="#f58f30"
+export RED1="#E95F26"
+export RED2="#F9A029"
 
 #green
-export GREEN1="#00b07e"
-export GREEN2="#00b07e"
+export GREEN1="#00B07E"
+export GREEN2="#AFFED3"
 
 #yellow
-export YELLOW1="#f9a029"
-export YELLOW2="#fad15a"
+export YELLOW1="#FAE16B"
+export YELLOW2="#F9B039"
 
 #blue
-export BLUE1="#006ec5"
-export BLUE2="#0094d1"
+export BLUE1="#7FDCFF"
+export BLUE2="#5797B7"
 
 #magenta
-export MAGENTA1="#9853de"
-export MAGENTA2="#ac6ced"
+export MAGENTA1="#AC6CED"
+export MAGENTA2="#9853DE"
 
 #cyan
-export CYAN1="#5797b7"
-export CYAN2="#6c78ed"
+export CYAN1="#2BB1C1"
+export CYAN2="#3CC6D0"
 
 #white
-export WHITE1="#7f8d9a"
-export WHITE2="#e5e5e5"
+export WHITE1="#E5E5E5"
+export WHITE2="#DCDCDC"

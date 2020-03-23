@@ -1,4 +1,5 @@
 #!/bin/sh
+# initial scripts came from: https://gist.github.com/atav32/7c1cfe3e06bd4c87349930995b61c011 but reverse
 conv() {
 	#BUG(poptart): Off by one on generation... it's technically wrong
 	printf '%0.16f\n' "$(echo "scale=17; $1.0 / 255.0" | bc -l)"

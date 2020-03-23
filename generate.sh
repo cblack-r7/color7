@@ -1,12 +1,21 @@
 #!/bin/sh
+# This project is structured to generate pseudo-templates from a specific defined style and it's style variants into terminal "themes"
+# Each style is defined as a directory inside of "./styles" and each style has an "init.sh" file that defines its style information and each "*.sh" file contains a set of exported variables defining the ANSI color scheme in hex format, these are called variants.
+# Then on run each theme target (terminal) located in "./templates" as a directory. These each also contain an "init.sh" that defines information and target templates. But these specifically also allow for transformation functions to be defined on the hex colors. If you look at the "./templates/iterm/init.sh" file this contains an exported tranform function and a set of shell functions that get imported and run on each of the color definitions. This is because iTerm2 stores it's values as RGB converted to float, so we needed a way to translate the hex to RGB and then to 16 digit accuracy.
 
+# Technically the code works on anything that has an init.sh and contains template values. As a few examples I also added dwm, st, and a zsh theme to the project. These are technically not terminal emulators but allow for the usage of the template injection for the project.
+
+# Error function. If a second value is passed the program will halt and exit with the error code
 e_error() {
 	printf "%s\\n" "$1" >&2
 	[ -n "$2" ] && exit "$2"
 }
 
+# List all the styles and variants
 list_variants() {
 	printf "style:\\n\\tvariant: description\\n"
+	# BUG(cblack): For loops over find are weak and prone to weird filename breakages
+	# shellcheck disable=SC2044
 	for s in $(find "./styles/" -type d); do
 		if [ -f "$s/init.sh" ]; then
 			STYLENAME=
@@ -16,6 +25,8 @@ list_variants() {
 			[ -z "$STYLENAME" ] && e_error "Style name not set for $i!" 3
 			[ -z "$STYLEINFO" ] && e_error "Style info not set for $i!" 3
 			printf "%s:\\n" "$STYLENAME"
+			# BUG(cblack): For loops over find are weak and prone to weird filename breakages
+			# shellcheck disable=SC2044
 			for i in $(find "$s" -type f); do
 				if [ "$(basename "$i")" = "init.sh" ]; then
 					continue
@@ -32,6 +43,7 @@ list_variants() {
 	done
 }
 
+# Ensure that all values are set for a theme, and if not exit
 check_vars() {
 	[ -z "$FOREGROUND" ] && e_error "\$FOREGROUND not set! Exiting..." 1
 	[ -z "$BACKGROUND" ] && e_error "\$BACKGROUND not set! Exiting..." 1
@@ -55,6 +67,7 @@ check_vars() {
 	#[ -z "${}" ] && e_error "\${} not set! Exiting..." 1
 }
 
+# Template rendering is handled by this sed monster. If an XFORM happens and the injection gets reached at render_template() time ensure that the values escape the % character in order to prevent breakages in sed
 render_template() {
 	sed -e "s%{{.FOREGROUND}}%${FOREGROUND}%g" \
 	    -e "s%{{.BACKGROUND}}%${BACKGROUND}%g" \
@@ -82,6 +95,8 @@ render_template() {
 
 generate() {
 	[ -d "$2" ] || ( mkdir -p "$2" || e_error "Could not create output dir" 9 )
+	# BUG(cblack): For loops over find are weak and prone to weird filename breakages
+	# shellcheck disable=SC2044
 	for term in $(find "./templates/" -type d); do
 		if [ -f "$term/init.sh" ]; then
 			INTARGET=
@@ -90,7 +105,6 @@ generate() {
 			. "$term/init.sh"
 			[ -z "$INTARGET" ] && e_error "Could not read template from $term" 4
 			[ -z "$EXTENSION" ] && e_error "Extension was not set for $term" 4
-                	#[ ! -z "$TEMPLATEXFRM" ] && printf "xform enabled\n"
 			if [ "x$TEMPLATEXFRM" != "x" ]; then
 						FOREGROUND="$($TEMPLATEXFRM "$FOREGROUND")"
 						BACKGROUND="$($TEMPLATEXFRM "$BACKGROUND")"
@@ -118,10 +132,16 @@ generate() {
 			#reset the template after xform
 			# shellcheck disable=SC1090
 			. "$1"
+			export TEMPLATEXFRM=
 		fi
 	done
 }
 
+# Parse CLI arguments
+# -s selects a style
+# -b selects a variant or does all variants
+# -o outputs to a specific directory
+# -l lists styles and variants
 sval="color7"
 bval="all"
 lflag=
@@ -138,12 +158,15 @@ do
     esac
 done
 
+# List the variants and exit
 if [ -n "$lflag" ]; then
 	list_variants
 	exit 0
 fi
 shift $((OPTIND - 1))
 
+# BUG(cblack): For loops over find are weak and prone to weird filename breakages
+# shellcheck disable=SC2044
 for s in $(find "./styles/" -type d); do
         if [ -f "$s/init.sh" ]; then
                 STYLENAME=
@@ -153,6 +176,8 @@ for s in $(find "./styles/" -type d); do
                 [ -z "$STYLENAME" ] && e_error "Style name not set for $i!" 3
                 [ -z "$STYLEINFO" ] && e_error "Style info not set for $i!" 3
 		if [ "x$STYLENAME" = "x$sval" ]; then
+			# BUG(cblack): For loops over find are weak and prone to weird filename breakages
+			# shellcheck disable=SC1090
 			for i in $(find "$s" -type f); do
                 	        if [ "$(basename "$i")" = "init.sh" ]; then
                 	                continue

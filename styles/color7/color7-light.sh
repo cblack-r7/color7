@@ -1,38 +1,38 @@
 #!/bin/sh
 export VARIANTNAME="color7-light"
 export VARIANTINFO="Light Rapid7 color scheme variant"
-export FOREGROUND="#414d58"
-export BACKGROUND="#e5e5e5"
-export CURSOR="#414d58"
+export FOREGROUND="#4E4E4E"
+export BACKGROUND="#F4F6F8"
+export CURSOR="#4E4E4E"
 
 #black
-export BLACK1="#2e363e"
-export BLACK2="#373b41"
+export BLACK1="#212933"
+export BLACK2="#4E4E4E"
 
 #red
-export RED1="#ed6e3e"
-export RED2="#f58f30"
+export RED1="#E95F26"
+export RED2="#F9B039"
 
 #green
-export GREEN1="#00b07e"
-export GREEN2="#00b07e"
+export GREEN1="#AFFED3"
+export GREEN2="#6DE8E3"
 
 #yellow
-export YELLOW1="#f9a029"
-export YELLOW2="#fad15a"
+export YELLOW1="#FAE16B"
+export YELLOW2="#FAD15A"
 
 #blue
-export BLUE1="#006ec5"
-export BLUE2="#0094d1"
+export BLUE1="#45D2FF"
+export BLUE2="#539CFF"
 
 #magenta
-export MAGENTA1="#9853de"
-export MAGENTA2="#ac6ced"
+export MAGENTA1="#6C78ED"
+export MAGENTA2="#5451A8"
 
 #cyan
-export CYAN1="#5797b7"
-export CYAN2="#6c78ed"
+export CYAN1="#CCE9F5"
+export CYAN2="#329AEC"
 
 #white
 export WHITE1="#4e4e4e"
-export WHITE2="#7a858d"
+export WHITE2="#E9EEF1"

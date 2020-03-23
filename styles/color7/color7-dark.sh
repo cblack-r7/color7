@@ -1,9 +1,9 @@
 #!/bin/sh
-export VARIANTNAME="color7-pastel"
-export VARIANTINFO="Pastel Rapid7 color scheme"
+export VARIANTNAME="color7-dark"
+export VARIANTINFO="Dark Rapid7 color scheme"
 
-export FOREGROUND="#212933"
-export BACKGROUND="#ACBAC3"
+export FOREGROUND="#ACBAC3"
+export BACKGROUND="#182028"
 export CURSOR="#E5E5E5"
 
 #black

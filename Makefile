@@ -1,26 +1,31 @@
-all: gnome
+all: check gen
+
+gen:
+	@./generate.sh
 
 check:
 	@shellcheck -s sh ./generate.sh
 
-package: check
-	@tar cvzf color7.tar.gz templates/*
+package: check gen
+	@tar cvzf color7.tar.gz output/*
 
-xfce:
-	@install -D ./xfce4-terminal/*.theme $(HOME)/.local/share/xfce4/terminal/colorschemes
+install_xfce: check gen
+	@mkdir -p $(HOME)/.local/share/xfce4/terminal/colorschemes
+	@install -D ./output/xfce4-terminal/*.theme $(HOME)/.local/share/xfce4/terminal/colorschemes
 
-gnome:
-	@./gnome-terminal/color7.sh
-	@./gnome-terminal/color7-light.sh
-	@./gnome-terminal/color7-pastel.sh
+install_gnome: check gen
+	@./output/gnome-terminal/color7.sh
+	@./output/gnome-terminal/color7-light.sh
+	@./output/gnome-terminal/color7-pastel.sh
+	@./output/gnome-terminal/color7-dark.sh
 
-omzsh:
-	@install -D ./oh-my-zsh/color7.zsh-theme $(HOME)/.oh-my-zsh/themes
+install_omzsh:
+	@install -D ./output/oh-my-zsh/color7.zsh-theme $(HOME)/.oh-my-zsh/themes
 
-install: xfce gnome omzsh
+install: install_xfce install_gnome install_omzsh
 
 clean:
-	@printf "Not really relevant\n"
+	@rm -rf ./output
 
 .PHONY:
-	all install clean xfce gnome omzsh check package
+	all install clean install_xfce install_gnome install_omzsh check package
