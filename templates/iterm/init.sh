@@ -16,7 +16,7 @@ exec_func() {
 	g=$(echo "ibase=16; $b" | bc)
 	b=$(echo "ibase=16; $c" | bc)
 	
-	printf '<dict>\\n\\t\\t<key>Blue Component</key>\\n\\t\\t<real>%s</real>\\n\\t\\t<key>Green Component</key>\\n\\t\\t<real>%s</real>\\n\\t\\t<key>Red Component</key>\\n\\t\\t<real>%s</real>\\n\\t</dict>\\n' "$(conv $b)" "$(conv $g)" "$(conv $r)" 
+	printf '<dict>\\n\\t\\t<key>Color Space</key>\\n\\t\\t<string>sRGB</string>\\n\\t\\t<key>Blue Component</key>\\n\\t\\t<real>%s</real>\\n\\t\\t<key>Green Component</key>\\n\\t\\t<real>%s</real>\\n\\t\\t<key>Red Component</key>\\n\\t\\t<real>%s</real>\\n\\t</dict>\\n' "$(conv $b)" "$(conv $g)" "$(conv $r)" 
 }
 export INTARGET="template.itermcolors"
 export EXTENSION="itermcolors"
